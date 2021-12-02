@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Place Finder</string>
+
+    <string name="search_hint">장소를 입력하세요.</string>
+
 </resources>
