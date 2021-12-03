@@ -23,11 +23,9 @@ class MainViewModel(private val getPlaceGroupListUseCase: GetPlaceGroupListUseCa
     private val queryLiveData = MutableLiveData<Map<String, String>>()
 
     val poiResult: LiveData<PagingData<PlayMapPoiItem>> = queryLiveData.switchMap {
-        println("[rascaldom] 222222222222222222222222222222222")
         Pager(
             config = PagingConfig(POI_PAGING_SIZE),
             pagingSourceFactory = {
-                println("[rascaldom] 44444444444444444444444444444")
                 PoiPagingSource(mapRestApi, it) }
         ).flow.flowOn(Dispatchers.IO).cachedIn(viewModelScope).asLiveData()
     }

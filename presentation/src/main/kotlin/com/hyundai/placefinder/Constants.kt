@@ -1,6 +1,12 @@
 package com.hyundai.placefinder
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+
 const val PLAY_MAP_APP_KEY = "bTVEMm5hNzBGQjB6azczTzhYeXk6SEVhaTFya1kzUkM2V3R4RDM3Sk4="
+
+val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
 const val POI_PAGING_SIZE = 20
 

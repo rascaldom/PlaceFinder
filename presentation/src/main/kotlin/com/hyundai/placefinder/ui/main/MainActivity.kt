@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.CombinedLoadStates
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.hyundai.placefinder.PLAY_MAP_APP_KEY
 import com.hyundai.placefinder.R
 import com.hyundai.placefinder.common.BaseActivity
@@ -13,6 +16,7 @@ import com.hyundai.placefinder.databinding.ActivityMainBinding
 import com.hyundai.placefinder.viewmodel.MainViewModel
 import com.playmap.sdk.PlayMapView
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity() {
@@ -21,6 +25,8 @@ class MainActivity : BaseActivity() {
     private val viewModel: MainViewModel by viewModel()
 
     private val mapView: PlayMapView by lazy { binding.mapView }
+
+    private val poiResultListAdapter: PoiResultListAdapter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +51,7 @@ class MainActivity : BaseActivity() {
     private fun initializeView() {
         initializeMapView()
         initializeSearchBar()
+        initializeResultListAdapter()
     }
 
     private fun initializeMapView() {
@@ -63,10 +70,11 @@ class MainActivity : BaseActivity() {
     }
 
     private fun mapViewCreate() {
-        mapView.initMap(37.56640, 126.97851, 17);
-
-        mapView.onMapInitListener { zoom, playMapPoint ->
-            Toast.makeText(this, "Map Loading Success !!!", Toast.LENGTH_LONG).show()
+        with(mapView) {
+            initMap(37.56640, 126.97851, 17)
+            onMapInitListener { zoom, playMapPoint ->
+                Toast.makeText(context, "Map Loading Success !!!", Toast.LENGTH_LONG).show()
+            }
         }
     }
 
@@ -83,6 +91,24 @@ class MainActivity : BaseActivity() {
                 }
             })
         }
+    }
+
+    private fun initializeResultListAdapter() {
+        with(binding.rvResultList) {
+            adapter = poiResultListAdapter.apply {
+                addLoadStateListener {
+
+                }
+                onItemClick = { position ->
+                    Toast.makeText(context, "$position", Toast.LENGTH_SHORT).show()
+                }
+            }
+            addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        }
+    }
+
+    private fun setLoadState(state: CombinedLoadStates) {
+
     }
 
 }

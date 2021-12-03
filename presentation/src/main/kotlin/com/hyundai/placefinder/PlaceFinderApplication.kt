@@ -1,6 +1,7 @@
 package com.hyundai.placefinder
 
 import android.app.Application
+import com.hyundai.placefinder.di.appModule
 import com.hyundai.placefinder.di.repositoryModule
 import com.hyundai.placefinder.di.useCaseModule
 import com.hyundai.placefinder.di.viewModelModule
@@ -19,6 +20,7 @@ class PlaceFinderApplication : Application() {
             androidContext(this@PlaceFinderApplication)
             androidLogger(Level.DEBUG)
             loadKoinModules(listOf(
+                appModule,
                 repositoryModule,
                 useCaseModule,
                 viewModelModule
