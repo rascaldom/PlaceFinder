@@ -1,10 +1,7 @@
 package com.hyundai.placefinder
 
 import android.app.Application
-import com.hyundai.placefinder.di.appModule
-import com.hyundai.placefinder.di.repositoryModule
-import com.hyundai.placefinder.di.useCaseModule
-import com.hyundai.placefinder.di.viewModelModule
+import com.hyundai.placefinder.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.loadKoinModules
@@ -21,6 +18,7 @@ class PlaceFinderApplication : Application() {
             androidLogger(Level.DEBUG)
             loadKoinModules(listOf(
                 appModule,
+                localModule,
                 repositoryModule,
                 useCaseModule,
                 viewModelModule

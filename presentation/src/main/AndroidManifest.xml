@@ -20,6 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlaceFinder"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true">
@@ -29,6 +30,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.group.GroupListActivity" />
+
+        <activity android:name=".ui.place.PlaceListActivity" />
+
     </application>
 
 </manifest>

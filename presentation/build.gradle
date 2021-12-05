@@ -46,10 +46,6 @@ android {
         enabled = true
     }
 
-//    viewBinding {
-//        enabled = true
-//    }
-
 }
 
 repositories {
@@ -72,12 +68,13 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
-    implementation 'androidx.paging:paging-runtime-ktx:3.1.0'
 
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    // AAC
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.paging:paging-runtime-ktx:3.1.0'
 
     // Koin
     implementation "io.insert-koin:koin-core:$koin_version"
@@ -85,8 +82,8 @@ dependencies {
     implementation "io.insert-koin:koin-android:$koin_version"
 
     // Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
 
     // Playmap
     implementation 'com.facebook.soloader:soloader:0.6.0+'

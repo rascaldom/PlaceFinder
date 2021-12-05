@@ -1,12 +1,17 @@
 package com.hyundai.placefinder.di
 
-import com.hyundai.domain.usecase.GetPlaceGroupListUseCase
+import com.hyundai.domain.usecase.GroupUseCase
+import com.hyundai.domain.usecase.PlaceUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {
 
     single {
-        GetPlaceGroupListUseCase(repository = get())
+        GroupUseCase(repository = get())
+    }
+
+    single {
+        PlaceUseCase(repository = get())
     }
 
 }

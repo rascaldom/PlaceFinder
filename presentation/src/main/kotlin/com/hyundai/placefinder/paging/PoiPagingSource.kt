@@ -27,13 +27,6 @@ class PoiPagingSource(private val mapRestApi: PlayMapRestApi, private val querie
                     POI_PAGING_SIZE
                 )
                 if (!response.isNullOrEmpty()) {
-                    response.forEach {
-                        println("[rascaldom] findAllPoi() poiId : ${it.poiId}")
-                        println("[rascaldom] findAllPoi() title : ${it.title}")
-                        println("[rascaldom] findAllPoi() addr : ${it.addr}")
-                        println("[rascaldom] findAllPoi() centerLat : ${it.centerLat}")
-                        println("[rascaldom] findAllPoi() centerLon : ${it.centerLon}")
-                    }
                     LoadResult.Page(
                         data = response,
                         prevKey = null,

@@ -11,6 +11,7 @@ import com.playmap.sdk.extension.PlayMapPoiItem
 class PoiResultListAdapter : PagingDataAdapter<PlayMapPoiItem, PoiResultListAdapter.ItemViewHolder>(Companion) {
 
     var onItemClick: ((Int) -> Unit)? = null
+    var onAddButtonClick: ((PlayMapPoiItem?) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(ItemFindPoiResultBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -25,6 +26,9 @@ class PoiResultListAdapter : PagingDataAdapter<PlayMapPoiItem, PoiResultListAdap
             with(binding) {
                 root.setOnClickListener {
                     onItemClick?.invoke(bindingAdapterPosition)
+                }
+                binding.add.setOnClickListener {
+                    onAddButtonClick?.invoke(getItem(bindingAdapterPosition))
                 }
             }
         }

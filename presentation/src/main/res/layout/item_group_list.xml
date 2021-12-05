@@ -7,12 +7,12 @@
 
         <variable
             name="data"
-            type="com.playmap.sdk.extension.PlayMapPoiItem" />
+            type="com.hyundai.domain.model.GroupModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:background="?android:attr/selectableItemBackground"
         android:paddingStart="20dp">
 
@@ -22,29 +22,51 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="16dp"
-            app:layout_constraintBottom_toTopOf="@id/addr"
+            app:layout_constraintBottom_toTopOf="@id/created"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
             bind:text="@{data.title}" />
 
         <TextView
-            android:id="@+id/addr"
+            android:id="@+id/created"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tv_last_modified"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
-            bind:text="@{data.addr}" />
+            bind:date="@{data.createdAt}"
+            bind:format="@{&quot;yyyy-MM-dd&quot;}" />
+
+        <TextView
+            android:id="@+id/tv_last_modified"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/last_modified"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/created" />
+
+        <TextView
+            android:id="@+id/modified"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="12dp"
+            app:layout_constraintStart_toEndOf="@id/tv_last_modified"
+            app:layout_constraintTop_toTopOf="@id/tv_last_modified"
+            bind:date="@{data.modifiedAt}"
+            bind:format="@{&quot;yyyy-MM-dd HH:mm&quot;}" />
 
         <ImageView
-            android:id="@+id/add"
+            android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:padding="5dp"
-            android:src="@drawable/outline_playlist_add_black_18"
+            android:src="@drawable/outline_delete_black_18"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
