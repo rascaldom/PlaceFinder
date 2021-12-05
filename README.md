@@ -12,7 +12,6 @@ PlayMap SDK 활용하여 장소를 검색하고 저장하는 기능을 하는 �
 - Koin
 - Coroutines
 - Gson
-- Glide
 
 ## Data Structure
 - 그룹 테이블
