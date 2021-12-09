@@ -13,6 +13,12 @@ import kotlinx.coroutines.withContext
 
 class PoiPagingSource(private val mapRestApi: PlayMapRestApi, private val queries: Map<String, String>) : PagingSource<Int, PlayMapPoiItem>() {
 
+    // continuation passing style
+    // labels
+    // suspend 동작 원리
+    // 일반함수로 변경하면서 마지막 파라미터에 Continuation(callback) 추가
+    // 라벨링 과정을 통해서 라인들을 switch-case 스타일로 변경
+    // 각각의 연산이 종료되면 다음 연산 재개를 위해 스테이트머신을(다음 포인트) 참조하고((ex)label++) resume 함수를 호출 (callback)
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PlayMapPoiItem> {
         return try {
             withContext(Dispatchers.IO) {
